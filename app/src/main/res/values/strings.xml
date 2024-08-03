@@ -2,7 +2,7 @@
     <string name="app_name">water_watch_app</string>
     <string name="title_home">Home</string>
     <string name="title_profile">Perfil</string>
-    <string name="title_services">Servicios</string>
+    <string name="title_contacts">Contactos</string>
     <string name="title_maintenance">Soporte</string>
     <string name="title_settings">Ajustes</string>
     <!-- TODO: Remove or change this placeholder text -->
