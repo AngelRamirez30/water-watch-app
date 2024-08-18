@@ -11,12 +11,14 @@
         android:id="@+id/btnBack"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="@drawable/ic_back_arrow"
-        android:contentDescription="@string/back_button"
         android:background="#FFC0CB"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:paddingBottom="2dp"/>
+
+
+    <!-- android:src="@drawable/ic_back_arrow"
+        android:contentDescription="@string/back_button" -->
 
     <!-- TextView con fondo rosa -->
     <TextView
@@ -83,18 +85,17 @@
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/your_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/description" />
+
+        <!-- android:src="@drawable/your_image"-->
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="150dp"
-
         android:fillViewport="true"
         app:layout_constraintTop_toBottomOf="@id/logo_image"
         app:layout_constraintBottom_toBottomOf="parent"
