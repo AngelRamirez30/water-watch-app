@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Botón para regresar -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src=""
+        android:contentDescription="@string/back_button"
+        android:background="#FFC0CB"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingBottom="2dp"/>
+
+    <!--agregar android:src="@drawable/ic_back_arrow" -->
+
+    <!-- TextView con fondo rosa -->
+    <TextView
+        android:id="@+id/lblHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:paddingBottom="16dp"
+        android:text="@string/title_settings"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:background="#FFC0CB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnBack"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Resumen de privacidad" />
+
+    <!-- Contenido principal -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/lblHome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Principios de privacidad de SHITSU"
+            android:textSize="20sp"
+            android:paddingTop="20dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"/>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="160dp"
+            android:layout_height="170dp"
+            android:layout_gravity="center"
+            android:src=""
+            android:alpha="0.3"
+            android:layout_marginBottom="16dp"/>
+        <!-- android:src="@drawable/your_image" -->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nuestra prioridad es salvaguardar tu privacidad y tus datos personales. Queremos brindarte un resumen detallado sobre cómo recopilamos, utilizamos y protegemos tu información."
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/info1_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1. Información Recopilada:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/info1_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• Nombre, dirección de correo electrónico y número de teléfono para crear una cuenta."
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/info2_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2. Uso de la Información:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/info2_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• Utilizamos tu información para proporcionar los servicios de transporte solicitados y mejorar la experiencia del usuario."
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/info3_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3. Compartir Información:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/info3_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• No compartimos tu información personal con terceros sin tu consentimiento."
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="16dp"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

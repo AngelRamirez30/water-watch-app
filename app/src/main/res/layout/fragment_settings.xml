@@ -1,20 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SettingsFragment">
+    android:background="#F9F9F9">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/lblHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/title_settings"
-        android:textSize="24sp"
         android:textAlignment="center"
         android:textColor="@color/black"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:id="@+id/lblHome" />
+        tools:text="Configuración" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center"
+        android:padding="16dp">
+
+        <!-- First Button Layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            android:padding="10dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:onClick="openTermsActivity">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+
+                android:layout_gravity="center_vertical"
+                android:contentDescription="Terms and Conditions Icon"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingStart="16dp"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Terminos y condiciones"
+                    android:textSize="18sp"
+                    android:textColor="#E91E63"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Waterwatch"
+                    android:textSize="14sp"
+                    android:textColor="#BDBDBD"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+
+                android:layout_gravity="center_vertical"
+                android:contentDescription="Arrow Icon"/>
+
+        </LinearLayout>
+
+        <!-- Second Button Layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            android:padding="10dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:onClick="openPrivacyActivity">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+
+                android:layout_gravity="center_vertical"
+                android:contentDescription="Privacy Summary Icon"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingStart="16dp"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resumen de privacidad"
+                    android:textSize="18sp"
+                    android:textColor="#E91E63"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Waterwatch"
+                    android:textSize="14sp"
+                    android:textColor="#BDBDBD"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+
+                android:layout_gravity="center_vertical"
+                android:contentDescription="Arrow Icon"/>
+        </LinearLayout>
+
+        <!-- Third Button Layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            android:padding="10dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:onClick="openAboutUsActivity">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+
+                android:layout_gravity="center_vertical"
+                android:contentDescription="About Us Icon"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingStart="16dp"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Acerca de nosotros"
+                    android:textSize="18sp"
+                    android:textColor="#E91E63"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Waterwatch"
+                    android:textSize="14sp"
+                    android:textColor="#BDBDBD"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+
+                android:layout_gravity="center_vertical"
+                android:contentDescription="Arrow Icon"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>
