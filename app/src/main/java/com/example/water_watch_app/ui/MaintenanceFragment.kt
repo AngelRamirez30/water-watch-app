@@ -1,60 +1,82 @@
 package com.example.water_watch_app.ui
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.CalendarView
+import android.widget.EditText
+import android.widget.TextView
 import com.example.water_watch_app.R
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MaintenanceFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MaintenanceFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var calendarView: CalendarView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_maintenance, container, false)
+        val view = inflater.inflate(R.layout.fragment_maintenance, container, false)
+
+        calendarView = view.findViewById(R.id.calendarView)
+
+        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            val selectedDate = Calendar.getInstance().apply {
+                set(year, month, dayOfMonth)
+            }
+
+            if (selectedDate.before(Calendar.getInstance())) {
+                // Show message or handle the case when the selected date is today or in the past
+                Log.i("MaintenanceFragment", "Fecha seleccionada no válida.")
+            } else {
+                showMaintenanceDialog(selectedDate)
+            }
+        }
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MaintenanceFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MaintenanceFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun showMaintenanceDialog(date: Calendar) {
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val dateString = dateFormat.format(date.time)
+
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_maintenance, null)
+        val dialogMessage = dialogView.findViewById<TextView>(R.id.dialogMessage)
+        val inputDetails = dialogView.findViewById<EditText>(R.id.inputDetails)
+        val btnConfirm = dialogView.findViewById<Button>(R.id.btnConfirm)
+        val btnCancel = dialogView.findViewById<Button>(R.id.btnCancel)
+
+        dialogMessage.text = "¿Desea que le realicen mantenimiento el día $dateString?"
+
+        val alertDialog = AlertDialog.Builder(requireContext())
+            .setView(dialogView)
+            .create()
+
+        btnConfirm.setOnClickListener {
+            // Handle confirm logic here
+            val details = inputDetails.text.toString()
+            if (details.isNotBlank()) { // Check if details are not empty
+                Log.i("MaintenanceFragment", "Mantenimiento confirmado para el día $dateString con detalles: $details")
+                alertDialog.dismiss()
+            } else {
+                inputDetails.error = "Ingrese detalles para continuar" // Provide feedback if empty
             }
+        }
+
+        btnCancel.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
     }
 }

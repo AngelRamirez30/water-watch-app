@@ -57,6 +57,7 @@ dependencies {
     //DaggerHilt
     implementation("com.google.dagger:hilt-android:2.48")
     implementation(libs.androidx.activity)
+    implementation(libs.androidx.gridlayout)
     kapt("com.google.dagger:hilt-android-compiler:2.48")
     //Glide
     implementation("com.github.bumptech.glide:glide:4.12.0")

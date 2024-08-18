@@ -40,9 +40,14 @@ class SplashActivity : AppCompatActivity() {
 
     private suspend fun isTokenValid(): Boolean {
         return try {
-            val response = homeRepository.getHomeData()
+            val response = homeRepository.getAllActiveSaa()
             // Si obtenemos una respuesta válida, el token es válido
-            response != null
+            if(response is List<*>){
+                true
+            } else {
+                false
+            }
+
         } catch (e: Exception) {
             // Si obtenemos un error 401, el token no es válido
             if (e.message?.contains("401") == true) {

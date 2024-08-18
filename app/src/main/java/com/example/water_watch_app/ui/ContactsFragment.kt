@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ContactsFragment : Fragment() {
+class ContactsFragment : BaseFragment() {
 
     @Inject
     lateinit var contactsRepository: ContactsRepository

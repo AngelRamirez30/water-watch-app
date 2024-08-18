@@ -6,34 +6,157 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
+
+    <!-- Imagen de fondo superior -->
+    <ImageView
+        android:id="@+id/backgroundImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="Fondo"
+        android:scaleType="centerCrop"
+        android:src="@drawable/water_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Contenedor del logo y título -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:orientation="vertical"
-        tools:ignore="MissingConstraints">
-        <EditText
-            android:id="@+id/usernameEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Username"
-            tools:ignore="MissingConstraints" />
+        android:layout_marginTop="18dp"
+        android:gravity="center_horizontal">
 
-        <EditText
-            android:id="@+id/passwordEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword"
-            tools:ignore="MissingConstraints" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="262dp"
+            android:layout_height="158dp"
+            app:srcCompat="@drawable/water_watch_title" />
 
-        <Button
-            android:id="@+id/loginButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            tools:ignore="MissingConstraints" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_marginTop="40dp"
+            android:layout_width="274dp"
+            android:layout_height="220dp"
+            app:srcCompat="@drawable/water_watch_logo" />
+
     </LinearLayout>
 
+    <!-- Contenedor del formulario de login -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:elevation="4dp"
+        android:backgroundTint="@color/white"
+        android:layout_marginHorizontal="10dp"
+        app:cardCornerRadius="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Título de inicio de sesión -->
+            <TextView
+                android:id="@+id/loginTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="12dp"
+                android:text="Iniciar sesión"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <!-- Campo de usuario con flecha a la derecha -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <EditText
+                    android:id="@+id/usernameEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_profile_black_24dp"
+                    android:drawablePadding="8dp"
+                    android:hint="Usuario"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/arrowToPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_arrow_forward_24"
+                    android:contentDescription="Siguiente"
+                    android:padding="16dp"
+                    android:onClick="goToPasswordEditText"/>
+            </LinearLayout>
+
+            <!-- Campo de contraseña con flecha a la derecha -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <EditText
+                    android:id="@+id/passwordEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_lock"
+                    android:drawablePadding="8dp"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/arrowToLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_arrow_forward_24"
+                    android:contentDescription="Iniciar sesión"
+                    android:padding="16dp"
+                    android:onClick="performLogin"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Botón de login sobre el CardView -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/loginButton"
+        app:shapeAppearanceOverlay="@style/circle"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:background="@color/secondary"
+        android:elevation="4dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_baseline_arrow_forward_24"
+        app:tint="@android:color/white"
+        app:layout_constraintTop_toTopOf="@id/container"
+        app:layout_constraintEnd_toEndOf="@id/container"
+        android:layout_marginRight="34dp"
+        android:translationY="-34dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

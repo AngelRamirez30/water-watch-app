@@ -1,16 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lblHome"
-        android:text="Home"
-        android:textSize="20dp"/>
+    <ImageView
+        android:id="@+id/backgroundImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="Fondo"
+        android:scaleType="centerCrop"
+        android:src="@drawable/water_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageTinaco" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/lblHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/title_home"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Spinner para seleccionar un tinaco -->
+    <Spinner
+        android:id="@+id/saaSpinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="16dp"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lblHome" />
+
+    <!-- Imagen del tinaco -->
+    <ImageView
+        android:id="@+id/imageTinaco"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/tinaco_91_100"
+        app:layout_constraintTop_toBottomOf="@id/saaSpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Estado del tinaco -->
+    <TextView
+        android:id="@+id/tvEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estado: óptimo"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:padding="8dp"
+        android:layout_marginTop="106dp"
+        app:layout_constraintTop_toBottomOf="@id/imageTinaco"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center" />
+
+    <!-- Información del tinaco en formato de tabla -->
+    <TableLayout
+        android:id="@+id/tlInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tvEstado"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingHorizontal="16dp">
+
+        <!-- Fila 1: Tipo y Capacidad -->
+        <TableRow>
+            <TextView
+                android:id="@+id/tvTipo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tipo: noswe"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/tvCapacidad"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Capacidad: 1200 L"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:padding="8dp" />
+        </TableRow>
+
+        <!-- Fila 2: Ph y Pet -->
+        <TableRow>
+            <TextView
+                android:id="@+id/tvPh"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ph: Alcalino"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/tvPet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pet: sí"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:padding="8dp" />
+        </TableRow>
+
+        <!-- Fila 3: Último Mantenimiento -->
+        <TableRow>
+            <TextView
+                android:id="@+id/tvUltimoMantenimiento"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Último Mantenimiento: 1 día"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:padding="8dp"
+                android:drawableLeft="@drawable/ic_maintenance_black_24dp"
+                android:drawablePadding="8dp" />
+        </TableRow>
+
+        <!-- Fila 4: Ubicación -->
+        <TableRow>
+            <TextView
+                android:id="@+id/tvUbicacion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Casa 1 - Pancho Villa"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:padding="8dp"
+                android:drawableLeft="@drawable/ic_location"
+                android:drawablePadding="8dp" />
+        </TableRow>
+
+    </TableLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tlInfo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

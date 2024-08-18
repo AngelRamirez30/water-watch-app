@@ -4,4 +4,17 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
+
+    <style name="CustomCalendarView" parent="Widget.Material3.MaterialCalendar">
+    <!-- Cambia el color del encabezado del calendario -->
+     <item name="colorAccent">@color/primary</item>
+    <!-- Cambia el color del texto del encabezado del calendario -->
+    <item name="android:textColorPrimary">@color/white</item>
+    <!-- Cambia el color del fondo del calendario -->
+    <item name="android:background">@color/transparent</item>
+    <!-- Cambia el color del dia seleccionado -->
+    <item name="android:colorControlActivated">@color/primary</item>
+    <!-- Cambia el color del texto de los días de la semana -->
+    <item name="android:selectedDateVerticalBar">@color/white</item>
+</style>
 </resources>
