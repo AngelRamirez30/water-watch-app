@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.water_watch_app.data.models.TokenWrapper
 import com.example.water_watch_app.data.repositories.HomeRepository
+import com.example.water_watch_app.data.repositories.TokenRepository
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -17,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
     lateinit var tokenWrapper: TokenWrapper
 
     @Inject
-    lateinit var homeRepository: HomeRepository
+    lateinit var tokenRepository: TokenRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +41,8 @@ class SplashActivity : AppCompatActivity() {
 
     private suspend fun isTokenValid(): Boolean {
         return try {
-            val response = homeRepository.getAllActiveSaa()
-            // Si obtenemos una respuesta válida, el token es válido
-            if(response is List<*>){
+            val response = tokenRepository.validateToken()
+            if(response.is_valid_token == true) {
                 true
             } else {
                 false

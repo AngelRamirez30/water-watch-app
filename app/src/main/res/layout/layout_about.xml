@@ -1,73 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/layout_about"
     android:background="#F9F9F9">
 
     <!-- Botón para regresar -->
-    <ImageButton
-        android:id="@+id/btnBack"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="#FFC0CB"
+    <ImageView
+        android:id="@+id/btnClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/baseline_close_24"
+        android:contentDescription="Cerrar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:paddingBottom="2dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-    <!-- android:src="@drawable/ic_back_arrow"
-        android:contentDescription="@string/back_button" -->
-
-    <!-- TextView con fondo rosa -->
+    <!-- Título centrado -->
     <TextView
         android:id="@+id/lblHome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:paddingBottom="16dp"
         android:text="@string/title_settings"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:background="#FFC0CB"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        app:layout_constraintStart_toEndOf="@id/btnClose"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnBack"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Acerca de nosotros" />
 
-    <!-- TextView para el título "Waterwatch" -->
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Waterwatch"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@id/btnBack"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:layout_gravity="center"/>
-
     <!-- Descripción de Waterwatch -->
 
-
-    <!-- Imagen (opcional) -->
-
-
-    <!-- ScrollView que contiene "Nuestra Misión" y todo el contenido debajo -->
-
+    <!-- Logo -->
     <TextView
         android:id="@+id/description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:gravity="center"
         android:text="En WaterWatch, nos apasiona garantizar la seguridad y la calidad del agua que llega a su hogar."
@@ -76,31 +54,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title" />
+        app:layout_constraintTop_toBottomOf="@id/lblHome" />
 
     <ImageView
         android:id="@+id/logo_image"
         android:layout_width="250dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
+        android:layout_height="170dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        android:src="@drawable/water_watch_logo"
+        app:layout_constraintTop_toBottomOf="@id/description"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/description" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- android:src="@drawable/your_image"-->
-
+    <!-- ScrollView que contiene el contenido -->
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="0dp"
         android:fillViewport="true"
         app:layout_constraintTop_toBottomOf="@id/logo_image"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -108,103 +83,105 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-
             <!-- Título "Nuestra Misión" -->
             <TextView
                 android:id="@+id/mission_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nuestra Misión"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
                 android:layout_gravity="center"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp"
+                android:text="Nuestra Misión"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <!-- Descripción de la misión -->
             <TextView
                 android:id="@+id/mission_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Garantizar que cada hogar tenga acceso a agua limpia y segura. Miramos hacia el futuro con la visión de liderar el mercado de soluciones de monitoreo de agua."
-                android:textSize="16sp"
-                android:textColor="@android:color/black"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
                 android:background="#FFC0CB"
                 android:padding="16dp"
-                android:layout_marginBottom="16dp"
-                android:layout_gravity="center"/>
+                android:text="Garantizar que cada hogar tenga acceso a agua limpia y segura. Miramos hacia el futuro con la visión de liderar el mercado de soluciones de monitoreo de agua."
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
 
-            <!-- Contenido debajo de "Nuestra Misión" -->
+            <!-- Título "Objetivos futuros" -->
             <TextView
                 android:id="@+id/mission_title2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Objetivos futuros"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
                 android:layout_gravity="center"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp"
+                android:text="Objetivos futuros"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
+            <!-- Descripción de los objetivos futuros -->
             <TextView
                 android:id="@+id/mission_description2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Estamos dedicados a innovar y proporcionar herramientas que empoderen a las personas para vivir una vida más saludable y sostenible."
-                android:textSize="16sp"
-                android:textColor="@android:color/black"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
                 android:background="#FFC0CB"
                 android:padding="16dp"
-                android:layout_marginBottom="16dp"
-                android:layout_gravity="center"/>
+                android:text="Estamos dedicados a innovar y proporcionar herramientas que empoderen a las personas para vivir una vida más saludable y sostenible."
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
 
+            <!-- Título "Nuestro equipo" -->
             <TextView
                 android:id="@+id/mission_title3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nuestro equipo"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
                 android:layout_gravity="center"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp"
+                android:text="Nuestro equipo"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
+            <!-- Descripción del equipo -->
             <TextView
                 android:id="@+id/mission_description3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Detrás de Waterwatch hay un equipo apasionado y dedicado comprometido a proporcionar el mejor monitoreo de calidad de agua."
-                android:textSize="16sp"
-                android:background="#FFC0CB"
-                android:textColor="@android:color/black"
-
-                android:padding="16dp"
+                android:layout_gravity="center"
                 android:layout_marginBottom="16dp"
-                android:layout_gravity="center"/>
+                android:background="#FFC0CB"
+                android:padding="16dp"
+                android:text="Detrás de Waterwatch hay un equipo apasionado y dedicado comprometido a proporcionar el mejor monitoreo de calidad de agua."
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
 
+            <!-- Título "Contacto" -->
             <TextView
                 android:id="@+id/mission_title4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Contacto"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
                 android:layout_gravity="center"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp"
+                android:text="Contacto"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
+            <!-- Descripción del contacto -->
             <TextView
                 android:id="@+id/mission_description4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Si tienes alguna pregunta, comentario o sugerencia, no dudes en ponerte en contacto con nuestro equipo de soporte."
-                android:textSize="16sp"
-                android:background="#FFC0CB"
-                android:textColor="@android:color/black"
-
-                android:padding="16dp"
+                android:layout_gravity="center"
                 android:layout_marginBottom="16dp"
-                android:layout_gravity="center"/>
+                android:background="#FFC0CB"
+                android:padding="16dp"
+                android:text="Si tienes alguna pregunta, comentario o sugerencia, no dudes en ponerte en contacto con nuestro equipo de soporte."
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
 
         </LinearLayout>
     </ScrollView>

@@ -9,6 +9,7 @@ import com.example.water_watch_app.data.network.AuthInterceptor
 import com.example.water_watch_app.data.services.AuthService
 import com.example.water_watch_app.data.services.ContactsService
 import com.example.water_watch_app.data.services.HomeService
+import com.example.water_watch_app.data.services.TokenService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -65,5 +66,11 @@ object NetworkModule {
     @Singleton
     fun provideContactsService(retrofit: Retrofit): ContactsService {
         return retrofit.create(ContactsService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTokenService(retrofit: Retrofit): TokenService {
+        return retrofit.create(TokenService::class.java)
     }
 }
