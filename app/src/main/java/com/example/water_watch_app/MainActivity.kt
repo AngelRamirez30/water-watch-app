@@ -1,18 +1,16 @@
 package com.example.water_watch_app
 
-import SettingsFragment
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.water_watch_app.ui.ContactsFragment
 import com.example.water_watch_app.ui.HomeFragment
 import com.example.water_watch_app.ui.MaintenanceFragment
+import com.example.water_watch_app.ui.SettingsFragment
 import com.example.water_watch_app.utils.NoInternetDialogFragment
 import com.example.water_watch_app.utils.ConnectivityManagerHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView

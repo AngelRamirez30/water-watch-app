@@ -1,3 +1,5 @@
+package com.example.water_watch_app.ui
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,11 +12,11 @@ import com.example.water_watch_app.utils.AuthManager
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class SettingsFragment : Fragment() {
 
-    //@Inject
-    //lateinit var authManager: AuthManager
+    @Inject
+    lateinit var authManager: AuthManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +43,7 @@ class SettingsFragment : Fragment() {
         // Configura el evento onClick para el botón de cerrar sesión
         val logoutButton: Button = view.findViewById(R.id.logoutButton)
         logoutButton.setOnClickListener {
-
+            authManager.logout()
         }
 
         return view
