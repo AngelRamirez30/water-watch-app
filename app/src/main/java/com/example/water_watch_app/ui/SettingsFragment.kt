@@ -1,5 +1,6 @@
 package com.example.water_watch_app.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.example.water_watch_app.GenericActivity
+import com.example.water_watch_app.ProfileActivity
 import com.example.water_watch_app.R
 import com.example.water_watch_app.utils.AuthManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,6 +25,12 @@ class SettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_settings, container, false)
+
+        val profileLayout: View = view.findViewById(R.id.profileLayout)
+        profileLayout.setOnClickListener {
+            val intent = Intent(requireContext(), ProfileActivity::class.java)
+            startActivity(intent)
+        }
 
         // Configura el evento onClick para el LinearLayout de términos y condiciones
         val termsLayout: View = view.findViewById(R.id.termsLayout)

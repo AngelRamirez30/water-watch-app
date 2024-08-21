@@ -1,5 +1,6 @@
 package com.example.water_watch_app.ui
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
@@ -8,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Spinner
 import android.widget.TextView
@@ -29,14 +32,17 @@ class HomeFragment : BaseFragment() {
     @Inject
     lateinit var homeRepository: HomeRepository
 
+
+    private lateinit var ivTinaco: ImageView
+    private lateinit var ivTinaco2: ImageView
+    private lateinit var btnDetails1: Button
+    private lateinit var btnDetails2: Button
+    private lateinit var btnEstado: Button
     private lateinit var lblHome: TextView
     private lateinit var saaSpinner: Spinner
     private lateinit var tvUbicacion: TextView
-    private lateinit var tvEstado: TextView
-    private lateinit var tvTipo: TextView
-    private lateinit var tvCapacidad: TextView
+    private lateinit var tvSerialKey: TextView
     private lateinit var tvPh: TextView
-    private lateinit var tvPet: TextView
     private lateinit var tvUltimoMantenimiento: TextView
     private lateinit var progressBar: ProgressBar
 
@@ -47,14 +53,16 @@ class HomeFragment : BaseFragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         // Inicializar las vistas
+        ivTinaco = view.findViewById(R.id.ivTinaco)
+        ivTinaco2 = view.findViewById(R.id.ivTinaco2)
+        btnDetails1 = view.findViewById(R.id.btnDetails1)
+        btnDetails2 = view.findViewById(R.id.btnDetails2)
+        btnEstado = view.findViewById(R.id.btnEstado)
         lblHome = view.findViewById(R.id.lblHome)
         saaSpinner = view.findViewById(R.id.saaSpinner)
         tvUbicacion = view.findViewById(R.id.tvUbicacion)
-        tvEstado = view.findViewById(R.id.tvEstado)
-        tvTipo = view.findViewById(R.id.tvTipo)
-        tvCapacidad = view.findViewById(R.id.tvCapacidad)
         tvPh = view.findViewById(R.id.tvPh)
-        tvPet = view.findViewById(R.id.tvPet)
+        tvSerialKey = view.findViewById(R.id.tvSerialKey)
         tvUltimoMantenimiento = view.findViewById(R.id.tvUltimoMantenimiento)
         progressBar = view.findViewById(R.id.progressBar)
 
@@ -84,6 +92,7 @@ class HomeFragment : BaseFragment() {
                     populateFields(firstSaa)
                 }
                 populateSpinner(allActiveSaa)
+
             } catch (e: Exception) {
                 when (e) {
                     is HttpException -> {
@@ -119,12 +128,87 @@ class HomeFragment : BaseFragment() {
     private fun populateFields(saaData: AllActiveSaaDataItem) {
         // Rellenar los campos con la información recibida
         tvUbicacion.text = saaData.full_address
-        tvEstado.text = "Estado: ${saaData.is_good}"
-        tvTipo.text = "Tipo: ${saaData.saa_name}"
-        tvCapacidad.text = "Capacidad: 1200L"
-        tvPh.text = "Ph: 7"
-        tvPet.text = "Pet: 0"
-        tvUltimoMantenimiento.text = "Último Mantenimiento: 14/07/2024"
+        tvSerialKey.text = "Serial: ${saaData.serial_key}"
+        tvPh.text = "Ph: ${saaData.ph_level}"
+        tvUltimoMantenimiento.text = "Último Mantenimiento hace: ${saaData.days_since_last_maintenance} dias"
+
+        btnEstado.setText("Estado: ${saaData.is_good}")
+        btnEstado.setOnClickListener{
+            Toast.makeText(context, "${saaData.is_good_description}", Toast.LENGTH_LONG).show()
+        }
+        btnDetails1.setOnClickListener{
+            val dialog = AlertDialog.Builder(requireContext())
+                .setTitle("Detalles del primer contenedor")
+                .setMessage("Capacidad máxima: ${saaData.max_saa_capacity}\n" +
+                        "Capacidad actual: ${saaData.current_saa_capacity}\n" +
+                        "Altura: ${saaData.saa_height}\n" +
+                        "Nivel del agua: ${saaData.water_level}%")
+                .setPositiveButton("Cerrar", null)
+                .create()
+            dialog.show()
+        }
+
+        btnDetails2.setOnClickListener{
+            val dialog = AlertDialog.Builder(requireContext())
+                .setTitle("Detalles del segundo contenedor")
+                .setMessage("Capacidad máxima: ${saaData.max_saa_capacity2}\n" +
+                        "Capacidad actual: ${saaData.current_saa_capacity2}\n" +
+                        "Altura: ${saaData.saa_height2}\n" +
+                        "Nivel del agua: ${saaData.water_level2}%")
+                .setPositiveButton("Cerrar", null)
+                .create()
+            dialog.show()
+
+        }
+        if (saaData.water_level < 5)
+            ivTinaco.setImageResource(R.drawable.tinaco_0)
+        else if (saaData.water_level < 10)
+            ivTinaco.setImageResource(R.drawable.tinaco_5)
+        else if (saaData.water_level < 20)
+            ivTinaco.setImageResource(R.drawable.tinaco_10)
+        else if (saaData.water_level < 30)
+            ivTinaco.setImageResource(R.drawable.tinaco_20)
+        else if (saaData.water_level < 40)
+            ivTinaco.setImageResource(R.drawable.tinaco_30)
+        else if (saaData.water_level < 50)
+            ivTinaco.setImageResource(R.drawable.tinaco_40)
+        else if (saaData.water_level < 60)
+            ivTinaco.setImageResource(R.drawable.tinaco_50)
+        else if (saaData.water_level < 70)
+            ivTinaco.setImageResource(R.drawable.tinaco_60)
+        else if (saaData.water_level < 80)
+            ivTinaco.setImageResource(R.drawable.tinaco_70)
+        else if (saaData.water_level < 90)
+            ivTinaco.setImageResource(R.drawable.tinaco_80)
+        else if (saaData.water_level < 95)
+            ivTinaco.setImageResource(R.drawable.tinaco_90)
+        else
+            ivTinaco.setImageResource(R.drawable.tinaco_100)
+
+        if (saaData.water_level2 < 5)
+            ivTinaco2.setImageResource(R.drawable.tinaco_0)
+        else if (saaData.water_level2 < 10)
+            ivTinaco2.setImageResource(R.drawable.tinaco_5)
+        else if (saaData.water_level2 < 20)
+            ivTinaco2.setImageResource(R.drawable.tinaco_10)
+        else if (saaData.water_level2 < 30)
+            ivTinaco2.setImageResource(R.drawable.tinaco_20)
+        else if (saaData.water_level2 < 40)
+            ivTinaco2.setImageResource(R.drawable.tinaco_30)
+        else if (saaData.water_level2 < 50)
+            ivTinaco2.setImageResource(R.drawable.tinaco_40)
+        else if (saaData.water_level2 < 60)
+            ivTinaco2.setImageResource(R.drawable.tinaco_50)
+        else if (saaData.water_level2 < 70)
+            ivTinaco2.setImageResource(R.drawable.tinaco_60)
+        else if (saaData.water_level2 < 80)
+            ivTinaco2.setImageResource(R.drawable.tinaco_70)
+        else if (saaData.water_level2 < 90)
+            ivTinaco2.setImageResource(R.drawable.tinaco_80)
+        else if (saaData.water_level2 < 95)
+            ivTinaco2.setImageResource(R.drawable.tinaco_90)
+        else
+            ivTinaco2.setImageResource(R.drawable.tinaco_100)
     }
 
     private fun populateSpinner(descriptions: List<AllActiveSaaDataItem>) {

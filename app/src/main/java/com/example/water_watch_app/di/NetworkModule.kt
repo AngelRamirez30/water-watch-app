@@ -4,11 +4,13 @@ package com.example.water_watch_app.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.water_watch_app.data.models.ProfileData
 import com.example.water_watch_app.data.models.TokenWrapper
 import com.example.water_watch_app.data.network.AuthInterceptor
 import com.example.water_watch_app.data.services.AuthService
 import com.example.water_watch_app.data.services.ContactsService
 import com.example.water_watch_app.data.services.HomeService
+import com.example.water_watch_app.data.services.ProfileService
 import com.example.water_watch_app.data.services.TokenService
 import dagger.Module
 import dagger.Provides
@@ -24,7 +26,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    private const val BASE_URL = "http://3.149.242.43:6969/client/"
+    private const val BASE_URL = "https://angelqui.xyz:6969/client/"
 
     @Provides
     @Singleton
@@ -72,5 +74,11 @@ object NetworkModule {
     @Singleton
     fun provideTokenService(retrofit: Retrofit): TokenService {
         return retrofit.create(TokenService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideProfile(retrofit: Retrofit): ProfileService {
+        return retrofit.create(ProfileService::class.java)
     }
 }

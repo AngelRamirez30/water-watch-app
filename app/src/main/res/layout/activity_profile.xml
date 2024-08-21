@@ -1,28 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainProfile"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="24dp"
     android:gravity="center">
 
     <LinearLayout
         android:layout_width="365dp"
         android:layout_height="350dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
 
-        <TextView
-            android:id="@+id/personal_data_title"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            android:text="Datos personales"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_gravity="center_horizontal"
-            tools:ignore="MissingConstraints" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/btnClose"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="16dp"
+                android:contentDescription="Cerrar"
+                android:src="@drawable/baseline_close_24" />
+
+            <TextView
+                android:id="@+id/personal_data_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Datos personales"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                tools:ignore="MissingConstraints" />
+        </LinearLayout>
+
 
         <!-- Sección de Usuario -->
         <TextView
@@ -30,27 +47,32 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="Usuario:"
+            android:textColor="@color/secondary"
+            android:layout_marginLeft="20dp"
             android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="16dp"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/username"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-
-                android:hint="Usuario"
+                android:textColor="@color/black"
                 android:padding="12dp"
-                android:text="Nicolas505" />
+                android:textSize="20dp"
+                android:text="Cargando..." />
 
             <ImageView
                 android:layout_width="48dp"
+                android:padding="4dp"
                 android:layout_height="match_parent"
+                android:backgroundTint="@color/primary"
                 android:background="@drawable/ic_profile_black_24dp"
                 />
         </LinearLayout>
@@ -60,6 +82,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
+            android:textColor="@color/secondary"
+            android:layout_marginLeft="20dp"
             android:text="Correo:"
             android:textSize="16sp" />
 
@@ -67,21 +91,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:layout_marginHorizontal="20dp"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/email"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-
                 android:padding="12dp"
-                android:hint="Correo"
-                android:text="nicolas505@gmail.com" />
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="20dp" />
 
             <ImageView
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
+                android:backgroundTint="@color/primary"
                 android:background="@drawable/ic_email" />
 
         </LinearLayout>
@@ -91,6 +117,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
+            android:textColor="@color/secondary"
+            android:layout_marginLeft="20dp"
             android:text="Telefono:"
             android:textSize="16sp" />
 
@@ -98,24 +126,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:layout_marginHorizontal="20dp"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/phone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-
+                android:textColor="@color/black"
                 android:padding="12dp"
-                android:hint="Telefono"
-                android:text="+52 6691013759" />
+                android:textSize="20dp"
+                android:text="" />
 
             <ImageView
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
+                android:backgroundTint="@color/primary"
                 android:background="@drawable/ic_call"  />
         </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

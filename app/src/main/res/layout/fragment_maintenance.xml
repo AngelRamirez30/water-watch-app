@@ -14,6 +14,24 @@
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         android:id="@+id/lblHome" />
+    <LinearLayout
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Pulse el dia que desea realizar el mantenimiento"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+
+    </LinearLayout>
 
     <CalendarView
         android:id="@+id/calendarView"
@@ -21,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/CustomCalendarView"/>
+
 
 
 </FrameLayout>
